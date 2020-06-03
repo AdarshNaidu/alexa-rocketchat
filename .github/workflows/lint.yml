@@ -7,8 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: navigate to directory
+      - name: navigate to directory and install dependencies
         run: cd lambda/custom && npm install
-      - name: lint
-        run: cd lambda/custom && npm run lint
+      - name: Run linters
+        uses: samuelmeuli/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          # Enable linters
+          eslint: true
+          
 #      - uses: stefanoeb/eslint-action@1.0.2
