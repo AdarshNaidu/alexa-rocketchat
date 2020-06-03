@@ -7,19 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: navigate to directory and install dependencies
-        run: cd lambda/custom && npm install
       - name: Run linters
         uses: hallee/eslint-action@1.0.3
         if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }} 
         with:
           repo-token: ${{secrets.GITHUB_TOKEN}}
           source-root: lambda/custom/
-
-#         with:
-#           github_token: ${{ secrets.github_token }}
-#           # Enable linters
-#           eslint: true
-          
-#      - uses: stefanoeb/eslint-action@1.0.2
-#         uses: samuelmeuli/lint-action@v1
