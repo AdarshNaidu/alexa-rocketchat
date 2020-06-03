@@ -20,3 +20,4 @@ jobs:
           github_token: ${{ secrets.github_token }}
           eslint: true
           eslint_dir: lambda/custom
+          auto_fix: true
