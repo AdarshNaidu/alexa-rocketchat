@@ -7,17 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10
-      - name: Install Node.js dependencies
-        run: cd lambda/custom && npm install
-      
       - name: Run linters
-        uses: samuelmeuli/lint-action@v1
+        uses: hallee/eslint-action@1.0.3
+        if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }} 
         with:
-          github_token: ${{ secrets.github_token }}
-          eslint: true
-          eslint_dir: lambda/custom
-          auto_fix: true
+          repo-token: ${{secrets.GITHUB_TOKEN}}
+          source-root: lambda/custom/
