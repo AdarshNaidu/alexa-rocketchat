@@ -8,9 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: navigate to directory
-        run: cd lambda/custom
-      - name: install dependencies
-        run: npm install
+        run: cd lambda/custom && npm install
       - name: lint
-        run: npm run lint
+        run: cd lambda/custom && npm run lint
 #      - uses: stefanoeb/eslint-action@1.0.2
