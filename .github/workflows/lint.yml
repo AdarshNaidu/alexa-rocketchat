@@ -7,4 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: navigate to directory
+        run: cd lambda/custom
       - uses: stefanoeb/eslint-action@1.0.2
