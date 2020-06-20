@@ -10,4 +10,4 @@ jobs:
       - name: navigate to directory
         run: cd lambda/custom && npm install
       - name: lint
-        run: cd lambda/custom && npm run lint
+        run: cd lambda/custom && ./node_modules/.bin/eslint '**/*.js'
