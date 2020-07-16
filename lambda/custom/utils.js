@@ -67,8 +67,12 @@ const getStaticAndDynamicSlotValuesFromSlot = (slot) => {
 
 // returns a random property from an object
 const randomProperty = function(obj) {
-	const keys = Object.keys(obj);
-	return obj[keys[keys.length * Math.random() << 0]];
+	if (typeof obj === 'string') {
+		return obj;
+	} else {
+		const keys = Object.keys(obj);
+		return obj[keys[keys.length * Math.random() << 0]];
+	}
 };
 
 module.exports = {
